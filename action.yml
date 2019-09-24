@@ -1,0 +1,13 @@
+name: 'Publish GitHub Action'
+description: 'Publish your GitHub Action'
+author: 'TG908'
+branding:
+  icon: 'truck'
+  color: 'blue'
+inputs:
+  github_token:
+    description: 'Token for the github API'
+    required: true
+runs:
+  using: 'node12'
+  main: 'lib/main.js'

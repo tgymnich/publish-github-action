@@ -1,0 +1,35 @@
+{
+  "name": "publish-github-action",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Publish your GitHub Action",
+  "main": "lib/main.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TG908/publish-github-action.git"
+  },
+  "keywords": [
+    "actions",
+    "node",
+    "publish"
+  ],
+  "author": "TG908",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.0.0",
+    "@actions/exec": "^1.0.1",
+    "@actions/github": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.13",
+    "@types/node": "^12.7.5",
+    "jest": "^24.8.0",
+    "jest-circus": "^24.7.1",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.1"
+  }
+}
