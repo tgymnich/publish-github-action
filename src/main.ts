@@ -16,7 +16,9 @@ async function run() {
     let majorVersion = 'v'+semver.major(json.version);
     let branchName: string = 'releases/'+version;
 
-    let tags = await octokit.repos.listTags({owner: context.repo.owner, repo: context.repo.repo}).data;
+    let tags = await octokit.repos.listTags({owner: context.repo.owner, repo: context.repo.repo});
+
+    console.log(tags);
 
     if (tags.some(tag => tag.name === version)) {
       console.log('Tag', version, 'already exists');
