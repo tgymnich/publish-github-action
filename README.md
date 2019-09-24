@@ -1,6 +1,5 @@
 # Publish GitHub Action
-
-# Publish GitHub Action
+This action creates a release branch for your GitHub Actions which can then be tagged and released. 
 
 # Example Workflow
 
