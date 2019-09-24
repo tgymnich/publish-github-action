@@ -23,9 +23,12 @@ async function run() {
     await exec.exec('git commit -a -m "prod dependencies"');
     await exec.exec('git', ['push', 'origin', branchName]);
 
-    await exec.exec('git', ['tag', '-fa', version]);
-    await exec.exec('git', ['tag', '-fa', minorVersion]);
-    await exec.exec('git', ['tag', '-fa', majorVersion]);
+    await exec.exec('git', ['push', 'origin', ':refs/tags/'+version]);
+    await exec.exec('git', ['tag', '-fa', version, '-m', version]);
+    await exec.exec('git', ['push', 'origin', ':refs/tags/'+minorVersion]);
+    await exec.exec('git', ['tag', '-f', minorVersion]);
+    await exec.exec('git', ['push', 'origin', ':refs/tags/'+majorVersion]);
+    await exec.exec('git', ['tag', '-f', majorVersion]);
     await exec.exec('git push --tags origin')
 
   } catch (error) {
