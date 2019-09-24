@@ -1,10 +1,12 @@
 import * as core from '@actions/core';
 import * as exec from '@actions/exec';
 const Github = require('@actions/github');
-const githubToken = core.getInput('github_token', { required: true });
-const context = Github.context;
+const Octokit = require('@octokit/rest').plugin(require('@octokit/plugin-retry'));
 const fs = require('fs');
 const semver = require('semver');
+const githubToken = core.getInput('github_token', { required: true });
+const context = Github.context;
+const octokit = new Octokit({auth: githubToken});
 
 async function run() {
   try {
@@ -30,6 +32,8 @@ async function run() {
     await exec.exec('git', ['push', 'origin', ':refs/tags/'+majorVersion]);
     await exec.exec('git', ['tag', '-f', majorVersion]);
     await exec.exec('git push --tags origin')
+
+    await octokit.repos.createRelease({owner: context.repo.owner, repo: context.repo.repo, tag_name: version, name: version});
 
   } catch (error) {
     core.setFailed(error.message);
