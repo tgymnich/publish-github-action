@@ -18,9 +18,9 @@ async function run() {
 
     let tags = await octokit.repos.listTags({owner: context.repo.owner, repo: context.repo.repo});
 
-    console.log(tags);
+    console.log(tags.data);
 
-    if (tags.some(tag => tag.name === version)) {
+    if (tags.data.some(tag => tag.name === version)) {
       console.log('Tag', version, 'already exists');
       return;
     }
