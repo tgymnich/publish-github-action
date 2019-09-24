@@ -16,6 +16,13 @@ async function run() {
     let majorVersion = 'v'+semver.major(json.version);
     let branchName: string = 'releases/'+version;
 
+    let tags = await octokit.repos.listTags({owner: context.repo.owner, repo: context.repo.repo});
+
+    if (tags.some(tag => tag.name === version)) {
+      console.log('Tag', version, 'already exists');
+      return;
+    }
+
     await exec.exec('git', ['checkout', '-b', branchName]);
     await exec.exec('npm install --production');
     await exec.exec('git config --global user.email "github-actions[bot]@users.noreply.github.com"');
