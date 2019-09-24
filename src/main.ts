@@ -4,12 +4,15 @@ const Github = require('@actions/github');
 const githubToken = core.getInput('github_token', { required: true });
 const context = Github.context;
 const fs = require('fs');
+const semver = require('semver');
 
 async function run() {
   try {
     let json = JSON.parse(fs.readFileSync('package.json', 'utf8'));
-    let version = json.version;
-    let branchName: string = 'releases/v'+version;
+    let version = 'v'+json.version;
+    let minorVersion = 'v'+semver.major(json.version)+'.'+semver.minor(json.version);
+    let majorVersion = 'v'+semver.major(json.version);
+    let branchName: string = 'releases/'+version;
 
     await exec.exec('git', ['checkout', '-b', branchName]);
     await exec.exec('npm install --production');
@@ -19,6 +22,11 @@ async function run() {
     await exec.exec('git add -f node_modules');
     await exec.exec('git commit -a -m "prod dependencies"');
     await exec.exec('git', ['push', 'origin', branchName]);
+
+    await exec.exec('git', ['tag', '-fa', version]);
+    await exec.exec('git', ['tag', '-fa', minorVersion]);
+    await exec.exec('git', ['tag', '-fa', majorVersion]);
+    await exec.exec('git push --tags origin')
 
   } catch (error) {
     core.setFailed(error.message);
