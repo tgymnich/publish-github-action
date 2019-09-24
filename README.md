@@ -1,7 +1,7 @@
 # Publish GitHub Action
 ![](https://img.shields.io/github/v/release/tg908/publish-github-action?style=flat-square)
 
-This action creates a release branch for your GitHub Actions which can then be tagged and released. The release version can be  defined in `package.json` .
+This action creates a release branch for your GitHub Actions which can then be tagged and released. The release version can be  defined in `package.json`.
 
 # Example Workflow
 
