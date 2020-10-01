@@ -1,6 +1,6 @@
 {
   "name": "publish-github-action",
-  "version": "1.1.11",
+  "version": "1.1.12",
   "private": true,
   "description": "Publish your GitHub Action",
   "main": "lib/main.js",
@@ -20,7 +20,7 @@
   "author": "TG908",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.0.0",
+    "@actions/core": "^1.2.6",
     "@actions/exec": "^1.0.1",
     "@actions/github": "^1.1.0",
     "@octokit/plugin-retry": "^2.2.0",
