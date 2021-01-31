@@ -37,6 +37,7 @@ async function run() {
     await exec.exec('git config --global user.name "github-actions[bot]"');
     await exec.exec('git remote set-url origin https://x-access-token:'+githubToken+'@github.com/'+context.repo.owner+'/'+context.repo.repo+'.git');
     await exec.exec('git add -f node_modules');
+    await exec.exec('git rm -r .github');
     await exec.exec('git commit -a -m "prod dependencies"');
     await exec.exec('git', ['push', 'origin', branchName]);
 
