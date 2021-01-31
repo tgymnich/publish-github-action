@@ -24,7 +24,7 @@
     "@actions/exec": "^1.0.1",
     "@actions/github": "^1.1.0",
     "@octokit/plugin-retry": "^3.0.7",
-    "@octokit/rest": "^16.30.1",
+    "@octokit/rest": "^18.0.15",
     "semver": "^7.3.4"
   },
   "devDependencies": {
