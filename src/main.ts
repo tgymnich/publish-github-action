@@ -1,12 +1,20 @@
 import * as core from '@actions/core';
 import * as exec from '@actions/exec';
 const Github = require('@actions/github');
-const Octokit = require('@octokit/rest').plugin(require('@octokit/plugin-retry'));
+const { Octokit } = require("@octokit/rest");
+const { retry } = require("@octokit/plugin-retry");
 const fs = require('fs');
 const semver = require('semver');
 const githubToken = core.getInput('github_token', { required: true });
 const context = Github.context;
-const octokit = new Octokit({auth: githubToken});
+const MyOctokit = Octokit.plugin(retry)
+const octokit = new MyOctokit({
+  auth: githubToken,
+  request: {
+    retries: 4,
+    retryAfter: 60,
+  },
+});
 
 async function run() {
   try {
