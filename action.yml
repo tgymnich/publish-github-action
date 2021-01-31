@@ -1,6 +1,6 @@
 name: 'Publish GitHub Action'
 description: 'Publish your GitHub Action'
-author: 'TG908'
+author: 'tgymnich'
 branding:
   icon: 'truck'
   color: 'blue'

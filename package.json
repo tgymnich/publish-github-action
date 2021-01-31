@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TG908/publish-github-action.git"
+    "url": "git+https://github.com/tgymnich/publish-github-action.git"
   },
   "keywords": [
     "actions",
     "node",
     "publish"
   ],
-  "author": "TG908",
+  "author": "tgymnich",
   "license": "MIT",
   "dependencies": {
     "@actions/core": "^1.2.6",
