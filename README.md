@@ -9,7 +9,7 @@ This action creates a release branch for your GitHub Actions which will be autom
 name: "Publish GitHub Action"
 on:
   push:
-    branches:    
+    branches:
       - master
       - main
 
@@ -17,7 +17,7 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
     - uses: tgymnich/publish-github-action@v1
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
